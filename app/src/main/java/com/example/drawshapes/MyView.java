@@ -22,7 +22,7 @@ public class MyView extends View {
     int sizeGrid = 48;
     float density;
 
-    String typeShape = TYPE_TRIANGLE;
+    String typeShape = TYPE_RECT;
     String color = "000000";
 
     int counterPoints;
@@ -30,7 +30,7 @@ public class MyView extends View {
 
 //    int counterRect;
 //    Rect[] rects = new Rect[100];
-//
+
 //    int counterCircles;
 //    Circle[] circles = new Circle[100];
 
@@ -41,6 +41,17 @@ public class MyView extends View {
         super(context, attrs);
         density = getResources().getDisplayMetrics().density;
         sizeGrid *= density;
+    }
+
+    public void undo() {
+        if (counterShapes>0) {
+            counterShapes--;
+            this.invalidate();
+        }
+    }
+
+    public void selectFigure() {
+        Log.i("onclick", "Выбор!");
     }
 
     @Override
