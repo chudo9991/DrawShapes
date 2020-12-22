@@ -28,12 +28,6 @@ public class MyView extends View {
     int counterPoints;
     PointF[] points = new PointF[MAX_POINTS];
 
-//    int counterRect;
-//    Rect[] rects = new Rect[100];
-
-//    int counterCircles;
-//    Circle[] circles = new Circle[100];
-
     int counterShapes;
     Shape[] shapes = new Shape[100];
 
@@ -48,6 +42,14 @@ public class MyView extends View {
             counterShapes--;
             this.invalidate();
         }
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setTypeShape(String typeShape) {
+        this.typeShape = typeShape;
     }
 
     public void selectFigure() {
@@ -67,8 +69,6 @@ public class MyView extends View {
 
         drawGrid(canvas);
         drawPoints(canvas);
-//        drawRects(canvas);
-//        drawCircle(canvas);
         drawShapes(canvas);
     }
 
@@ -149,9 +149,6 @@ public class MyView extends View {
 
     private void checkPointsForCreateCircle() {
         if (counterPoints >= 2) {
-//            float a = points[1].x - points[0].x;
-//            float b = points[1].y - points[0].y;
-//            float radius = (float)Math.sqrt( Math.pow(a, 2) + Math.pow(b, 2) );
             Circle circle = new Circle(this.color, points[0], points[1]);
             shapes[counterShapes] = circle;
             counterShapes++;
